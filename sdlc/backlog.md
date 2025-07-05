@@ -25,21 +25,26 @@
 - [x] Create a Document for Visual Novel image generation using gen4
 - [x] Create video generation script based on samples/kling-sample.txt and existing code in src for gen4
 - [x] Add start image for video generation script, use images from scenes folder
-- [ ] Design pipeline for Visual Novel image generation using Gen4 and Kling model
-    - [ ] Creation of storyboard
-    - [ ] Creation of character descriptions
-    - [ ] Creation of background descriptions
-    - [ ] Creation of scenes using characters and backgrounds
-    - [ ] Create a script to generate characters & link to description
-    - [ ] Create a script to generate backgrounds & link to description
-    - [ ] Create a script to generate scenes using characters and backgrounds & link to description
-    - [ ] Create a script to generate videos using scenes & link to description
-- [ ] Create sample story: male hero, damsel in distress, villain, fantasy setting
-    - [ ] Text documents for storyboard, character descriptions, background descriptions, scene descriptions
-    - [ ] Create sample images for characters and backgrounds
-    - [ ] Create sample scene using characters and backgrounds
-    - [ ] Create sample video using scene
-    - [ ] Update documentation with sample story details
+- [x] Design pipeline for Visual Novel image generation using Gen4 and Kling model
+    - [x] Creation of storyboard
+    - [x] Creation of character descriptions
+    - [x] Creation of background descriptions
+    - [x] Creation of scenes using characters and backgrounds
+    - [x] Create a script to generate characters & link to description
+    - [x] Create a script to generate backgrounds & link to description
+    - [x] Create a script to generate scenes using characters and backgrounds & link to description
+    - [x] Create a script to generate videos using scenes & link to description
+- [x] Create sample story: male hero, damsel in distress, villain, fantasy setting
+    - [x] Text documents for storyboard, character descriptions, background descriptions, scene descriptions
+    - [x] Create sample images for characters and backgrounds
+    - [x] Create sample scene using characters and backgrounds
+    - [x] Create sample video using scene
+    - [x] Update documentation with sample story details
+- [x] Refactor - clean up duplicate code
+    - [x] edit doc/sample-run.md to use gen4-image-generator.mjs
+    - [x] remove extra code from src/generate-*.mjs
+    - [x] edit tests to use gen4-image-generator.mjs
 - [ ] check src folder and update `architecture.md` with implementation details
 - [ ] Check .github/copilot-instructions.md for any missing instructions
-- [ ] Test & Check results. If successful, test again.
+- [x] Test & Check results. If successful, test again.
+- [x] Update documentation and tests to use gen4-image-generator.mjs directly for all image generation (characters, backgrounds, scenes)
