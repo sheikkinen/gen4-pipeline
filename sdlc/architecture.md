@@ -8,6 +8,7 @@
 ├── src/                    # Source code implementation
 │   └── gen4-image-generator.mjs # Stand-alone script for image generation
 ├── test/                   # Automated and manual test scripts
+├── doc/                    # General project documentation (guides, API docs, etc.)
 └── sdlc/                   # SDLC-related files and folders
     ├── architecture.md     # System architecture description
     ├── vision.md           # Project vision and goals
@@ -23,6 +24,7 @@
 - The script uses the Replicate API to generate images with the selected model and resolution, and can download the resulting image to a specified path.
 - The script supports using a local image as a reference via the `--local_image` CLI argument. The image is base64-encoded and passed to the Replicate API as a data URL, enabling users to use their own assets in addition to remote URLs.
 - The `samples/` folder contains reference scripts and data, while `test/` is reserved for automated/manual test scripts.
+- The `doc/` folder contains general project documentation, such as guides and API docs.
 - The `sdlc/` folder contains all SDLC documentation, including architecture, vision, backlog, user stories, and solution descriptions.
 
 _This document will describe the system architecture._
