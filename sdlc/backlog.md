@@ -20,5 +20,7 @@
     - [x] Script for creating characters and backgrounds - folders to hold the images
     - [x] Script for generating scenes using characters and backgrounds - folders to hold the images
     - [x] Update plan with implementation details
+    - [x] Add test cases for the scripts
+- [ ] Create a Document for Visual Novel image generation using gen4
 - [ ] Check .github/copilot-instructions.md for any missing instructions
 - [ ] Test & Check results. If successful, test again.
