@@ -53,6 +53,11 @@ const argv = yargs(hideBin(process.argv))
     type: "array",
     description: "Reference image URLs (comma separated or multiple --reference_images)"
   })
+  .option("local_image", {
+    alias: "l",
+    type: "string",
+    description: "Path to a local image file to use as a reference (will be base64-encoded and passed as a reference image)"
+  })
   .help()
   .argv;
 
@@ -70,6 +75,19 @@ const input = {
   reference_tags: argv.reference_tags || [],
   reference_images: argv.reference_images || []
 };
+
+// If local_image is provided, read and base64-encode it, then add to reference_images
+if (argv.local_image) {
+  try {
+    const localImagePath = path.resolve(argv.local_image);
+    const imageData = fs.readFileSync(localImagePath);
+    const base64Image = `data:image/png;base64,${imageData.toString('base64')}`;
+    input.reference_images.push(base64Image);
+    console.log(`Added local image as base64 reference: ${localImagePath}`);
+  } catch (err) {
+    console.error('Failed to read or encode local image:', err);
+  }
+}
 
 async function main() {
   try {
@@ -113,9 +131,18 @@ main();
 // node src/gen4-image-generator.mjs \
 //   --prompt "a close up portrait of @woman and @man standing in @park, hands in pockets, looking cool. She is wearing her pink sweater and bangles." \
 //   --mode fast \
-//   --resolution "832 × 1248 (Portrait)" \
+//   --resolution 1080p \
 //   --output ./output.png \
 //   --reference_tags park woman man \
 //   --reference_images "https://replicate.delivery/pbxt/NHVhGWPplgrmOE8EGTVhbeSqWuZBcZLHyMQrgrTH4Hpa1ljU/m4hjkmbk79rma0cqrnxt67cqnw.jpg" \
 //   --reference_images "https://replicate.delivery/pbxt/NHVhFhdxAAmuXKUyT4r10KIalYrXf9vp5B40CmAeXlPieuOs/w99em95b01rmc0cqrny8chf49w.jpg" \
 //   --reference_images "https://replicate.delivery/pbxt/NHVhGE5GSJlAfL9RkGFvUbx70KVl7l7KamUNLHOAUd1sQVuF/psjdbkzgm1rmc0cqrnysbg93cm.jpg"
+//
+// Example with a local image as reference:
+// node src/gen4-image-generator.mjs \
+//   --prompt "a close up portrait of @woman and @man standing in @park, hands in pockets, looking cool. She is wearing her pink sweater and bangles." \
+//   --mode fast \
+//   --resolution 1080p \
+//   --output ./output.png \
+//   --reference_tags park woman man \
+//   --local_image ./input/lady.png

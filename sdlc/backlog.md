@@ -8,11 +8,17 @@
 - [x] test
 - [x] Move project specific filestructure from copilot-instructions.md to architecture.md
 - [x] Update architecture.md with implementation details
-- [ ] Update created code using samples/hidream-replicate.mjs
+- [x] Update created code using samples/hidream-replicate.mjs
     - [x] Support CLI arguments for prompt, mode, and output
     - [x] Use dotenv for environment variables
     - [x] Check samples/gen4-sample for intended functionality
     - [x] create output folder if it does not exist and write output to it
     - [x] Add image download and metadata writing
+- [x] Add support for local image reference (base64) and automated Jest test
+- [ ] Create doc folder to hold documentation files
+- [ ] Draft a Plan for Visual Novel image generation using gen4
+    - [ ] Script for creating characters and backgrounds - folders to hold the images
+    - [ ] Script for generating scenes using characters and backgrounds - folders to hold the images
+    - [ ] Update plan with implementation details
 - [ ] Check .github/copilot-instructions.md for any missing instructions
 - [ ] Test & Check results. If successful, test again.

@@ -21,6 +21,7 @@
 - The main image generation logic is implemented in `src/gen4-image-generator.mjs`, which supports CLI arguments for prompt, mode, output, and resolution.
 - Environment variables (such as the Replicate API token) are loaded using `dotenv` from a `.env` file if present.
 - The script uses the Replicate API to generate images with the selected model and resolution, and can download the resulting image to a specified path.
+- The script supports using a local image as a reference via the `--local_image` CLI argument. The image is base64-encoded and passed to the Replicate API as a data URL, enabling users to use their own assets in addition to remote URLs.
 - The `samples/` folder contains reference scripts and data, while `test/` is reserved for automated/manual test scripts.
 - The `sdlc/` folder contains all SDLC documentation, including architecture, vision, backlog, user stories, and solution descriptions.
 
