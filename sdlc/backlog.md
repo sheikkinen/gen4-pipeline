@@ -17,8 +17,8 @@
 - [x] Add support for local image reference (base64) and automated Jest test
 - [x] Create doc folder to hold documentation files
 - [x] Draft a Plan for Visual Novel image generation using gen4
-    - [ ] Script for creating characters and backgrounds - folders to hold the images
-    - [ ] Script for generating scenes using characters and backgrounds - folders to hold the images
-    - [ ] Update plan with implementation details
+    - [x] Script for creating characters and backgrounds - folders to hold the images
+    - [x] Script for generating scenes using characters and backgrounds - folders to hold the images
+    - [x] Update plan with implementation details
 - [ ] Check .github/copilot-instructions.md for any missing instructions
 - [ ] Test & Check results. If successful, test again.

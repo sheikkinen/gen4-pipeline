@@ -23,9 +23,9 @@ This document outlines the plan for generating and organizing images for a Visua
 ## Example Usage
 
 ```sh
-node src/generate-characters.mjs --prompt "A young woman in a school uniform, smiling" --output ./characters/heroine.png
-node src/generate-backgrounds.mjs --prompt "A cherry blossom park in spring" --output ./backgrounds/park.png
-node src/generate-scenes.mjs --prompt "The heroine standing in the park, looking at the camera" --reference_images ./characters/heroine.png ./backgrounds/park.png --output ./scenes/scene1.png
+node src/generate-characters.mjs --prompt "A young woman in a school uniform, smiling"
+node src/generate-backgrounds.mjs --prompt "A cherry blossom park in spring"
+node src/generate-scenes.mjs --prompt "The heroine standing in the park, looking at the camera" --reference_images ./characters/character-123.png ./backgrounds/background-456.png
 ```
 
 ## Implementation Notes
