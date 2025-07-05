@@ -16,7 +16,7 @@
     - [x] Add image download and metadata writing
 - [x] Add support for local image reference (base64) and automated Jest test
 - [x] Create doc folder to hold documentation files
-- [ ] Draft a Plan for Visual Novel image generation using gen4
+- [x] Draft a Plan for Visual Novel image generation using gen4
     - [ ] Script for creating characters and backgrounds - folders to hold the images
     - [ ] Script for generating scenes using characters and backgrounds - folders to hold the images
     - [ ] Update plan with implementation details

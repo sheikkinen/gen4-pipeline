@@ -26,5 +26,10 @@
 - The `samples/` folder contains reference scripts and data, while `test/` is reserved for automated/manual test scripts.
 - The `doc/` folder contains general project documentation, such as guides and API docs.
 - The `sdlc/` folder contains all SDLC documentation, including architecture, vision, backlog, user stories, and solution descriptions.
+- The project will include scripts for generating and organizing Visual Novel assets:
+  - `generate-characters.mjs` for character images (output to `characters/`)
+  - `generate-backgrounds.mjs` for background images (output to `backgrounds/`)
+  - `generate-scenes.mjs` for scene images (output to `scenes/`)
+- The plan and workflow are documented in `doc/visual-novel-plan.md`.
 
 _This document will describe the system architecture._
