@@ -1,4 +1,4 @@
 # Backlog
 
-- [ ] Example task: Define MVP user stories
-- [ ] Example task: Draft initial solution description
+- [x] Create initial project folder structure
+- [x] Create test cases for initial project folder structure

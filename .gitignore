@@ -1,4 +1,5 @@
 .env
 .npmrc
+.DS_Store
 
 hidream-replicate.mjs
