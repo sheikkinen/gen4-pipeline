@@ -17,7 +17,7 @@ const argv = yargs(hideBin(process.argv))
   .option('output', {
     alias: 'o',
     type: 'string',
-    default: './backgrounds',
+    default: './novel/backgrounds',
     description: 'Output folder for generated background images'
   })
   .help()
@@ -28,7 +28,8 @@ if (!fs.existsSync(argv.output)) {
   console.log(`Created output directory: ${argv.output}`);
 }
 
-const outPath = path.join(argv.output, `background-${Date.now()}.png`);
-const command = `node src/gen4-image-generator.mjs --prompt "${argv.prompt}" --output ${outPath}`;
+const timestamp = Date.now();
+const outPath = path.join(argv.output, `background-${timestamp}.png`);
+const command = `node src/gen4-image-generator.mjs --prompt "${argv.prompt}" --output "${outPath}"`;
 console.log('Running:', command);
 execSync(command, { stdio: 'inherit' });

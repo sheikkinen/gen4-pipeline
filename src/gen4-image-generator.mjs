@@ -76,16 +76,19 @@ const input = {
   reference_images: argv.reference_images || []
 };
 
-// If local_image is provided, read and base64-encode it, then add to reference_images
+// If local_image is provided, read and base64-encode it/them, then add to reference_images
 if (argv.local_image) {
-  try {
-    const localImagePath = path.resolve(argv.local_image);
-    const imageData = fs.readFileSync(localImagePath);
-    const base64Image = `data:image/png;base64,${imageData.toString('base64')}`;
-    input.reference_images.push(base64Image);
-    console.log(`Added local image as base64 reference: ${localImagePath}`);
-  } catch (err) {
-    console.error('Failed to read or encode local image:', err);
+  const localImages = Array.isArray(argv.local_image) ? argv.local_image : [argv.local_image];
+  for (const imgPath of localImages) {
+    try {
+      const localImagePath = path.resolve(imgPath);
+      const imageData = fs.readFileSync(localImagePath);
+      const base64Image = `data:image/png;base64,${imageData.toString('base64')}`;
+      input.reference_images.push(base64Image);
+      console.log(`Added local image as base64 reference: ${localImagePath}`);
+    } catch (err) {
+      console.error('Failed to read or encode local image:', err);
+    }
   }
 }
 
@@ -102,22 +105,25 @@ async function main() {
       }
       const response = await axios({ url, method: "GET", responseType: "stream" });
       const outPath = argv.output.endsWith('.png') ? argv.output : `${argv.output}-${uuidv4()}.png`;
-      const stream = response.data.pipe(fs.createWriteStream(outPath));
-      stream.on('finish', async () => {
-        console.log(`Image saved to ${outPath}`);
-        // Add prompt as metadata
-        try {
-          await exiftool.write(outPath, { Description: argv.prompt });
-          console.log('Prompt metadata written to image.');
-        } catch (metaErr) {
-          console.error('Failed to write metadata:', metaErr);
-        } finally {
-          await exiftool.end();
-        }
+      await new Promise((resolve, reject) => {
+        const stream = response.data.pipe(fs.createWriteStream(outPath));
+        stream.on('finish', resolve);
+        stream.on('error', reject);
       });
+      console.log(`Image saved to ${outPath}`);
+      // Add prompt as metadata
+      try {
+        await exiftool.write(outPath, { Description: argv.prompt });
+        console.log('Prompt metadata written to image.');
+      } catch (metaErr) {
+        console.error('Failed to write metadata:', metaErr);
+      } finally {
+        await exiftool.end();
+      }
     }
   } catch (err) {
     console.error("Error generating image:", err);
+    process.exitCode = 1;
   }
 }
 

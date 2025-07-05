@@ -19,3 +19,7 @@ output/
 
 # VSCode
 .vscode/
+
+# Output & Test Results
+test/results/
+novel/

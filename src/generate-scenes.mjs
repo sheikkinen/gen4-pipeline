@@ -23,7 +23,7 @@ const argv = yargs(hideBin(process.argv))
   .option('output', {
     alias: 'o',
     type: 'string',
-    default: './scenes',
+    default: './novel/scenes',
     description: 'Output folder for generated scene images'
   })
   .help()

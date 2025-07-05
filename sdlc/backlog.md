@@ -21,6 +21,10 @@
     - [x] Script for generating scenes using characters and backgrounds - folders to hold the images
     - [x] Update plan with implementation details
     - [x] Add test cases for the scripts
-- [ ] Create a Document for Visual Novel image generation using gen4
+    - [x] Refactor character, background, scene folder as subfolders of novel folder - update folders, scripts, tests
+- [x] Create a Document for Visual Novel image generation using gen4
+- [x] Create video generation script based on samples/kling-sample.txt and existing code in src for gen4
+- [x] Add start image for video generation script, use images from scenes folder
+- [ ] check src folder and update `architecture.md` with implementation details
 - [ ] Check .github/copilot-instructions.md for any missing instructions
 - [ ] Test & Check results. If successful, test again.
