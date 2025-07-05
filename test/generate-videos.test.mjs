@@ -8,7 +8,8 @@ import { describe, it, expect } from '@jest/globals';
 
 const resultsDir = './novel/videos';
 const prompt = 'A test video for visual novel.';
-const command = `node src/generate-videos.mjs --prompt "${prompt}" --output ${resultsDir} --duration 2`;
+const startImage = 'novel/scenes/scene-1751697523343.png'; // Use a valid PNG from scenes
+const command = `node src/generate-videos.mjs --prompt "${prompt}" --output ${resultsDir} --duration 5 --start_image ${startImage}`;
 
 describe('generate-videos.mjs', () => {
   it('should create the output folder, save the video, and write prompt metadata', (done) => {
@@ -27,5 +28,5 @@ describe('generate-videos.mjs', () => {
       expect(meta).toBe(prompt);
       done();
     });
-  }, 120000);
+  }, 300000); // 5 minutes timeout
 });
