@@ -23,3 +23,8 @@ output/
 # Output & Test Results
 test/results/
 novel/
+# Allow markdown description files in novel/
+!novel/storyboard.md
+!novel/characters/character-descriptions.md
+!novel/backgrounds/background-descriptions.md
+!novel/scenes/scene-descriptions.md
