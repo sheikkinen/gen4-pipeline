@@ -5,7 +5,8 @@ Current folder structure:
 ```
 / (root)
 ├── samples/                # Example data, scripts, or reference files
-├── src/                    # Source code implementation
+├── src/                    # Source code implementation - see `architecture.md`
+├── test/                   # Automated and manual test scripts
 └── sdlc/                   # SDLC-related files and folders
     ├── architecture.md     # System architecture description
     ├── vision.md           # Project vision and goals
@@ -26,3 +27,7 @@ Current folder structure:
 8. **Review and Merge**: git add, commit, and push changes to the repository. 
 
 This process ensures traceability from initial idea to implementation and testing, while maintaining alignment with the project's vision and architecture.
+
+## IMPORTANT
+
+Anticipate the next command to be `follow the process`. If in doubt, run the tests.

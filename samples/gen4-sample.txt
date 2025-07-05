@@ -1,0 +1,26 @@
+Import and set up the client:
+import Replicate from "replicate";
+import fs from "node:fs";
+
+const replicate = new Replicate({
+  auth: process.env.REPLICATE_API_TOKEN,
+});
+
+Copy
+Run runwayml/gen4-image using Replicate’s API. Check out the model's schema for an overview of inputs and outputs.
+
+const input = {
+  prompt: "a close up portrait of @woman and @man standing in @park, hands in pockets, looking cool. She is wearing her pink sweater and bangles.",
+  resolution: "1080p",
+  aspect_ratio: "4:3",
+  reference_tags: ["park","woman","man"],
+  reference_images: ["https://replicate.delivery/pbxt/NHVhGWPplgrmOE8EGTVhbeSqWuZBcZLHyMQrgrTH4Hpa1ljU/m4hjkmbk79rma0cqrnxt67cqnw.jpg","https://replicate.delivery/pbxt/NHVhFhdxAAmuXKUyT4r10KIalYrXf9vp5B40CmAeXlPieuOs/w99em95b01rmc0cqrny8chf49w.jpg","https://replicate.delivery/pbxt/NHVhGE5GSJlAfL9RkGFvUbx70KVl7l7KamUNLHOAUd1sQVuF/psjdbkzgm1rmc0cqrnysbg93cm.jpg"]
+};
+
+const output = await replicate.run("runwayml/gen4-image", { input });
+
+// To access the file URL:
+console.log(output.url()); //=> "http://example.com"
+
+// To write the file to disk:
+fs.writeFile("my-image.png", output);

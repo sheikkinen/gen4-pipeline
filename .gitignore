@@ -3,3 +3,19 @@
 .DS_Store
 
 hidream-replicate.mjs
+
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Output
+*.log
+*.out
+output/
+
+# VSCode
+.vscode/
