@@ -37,6 +37,10 @@
   - Script: `src/generate-videos.mjs`
   - Input: scene image, video prompt, duration, mode
   - Output: MP4s in `novel/videos/`, prompt metadata `.txt`
+- **Audio:**
+  - Script: `src/generate-audio.mjs`
+  - Input: audio prompt (e.g., scene description, sound effects), duration
+  - Output: MP3s in `novel/audio/`, prompt metadata `.txt`
 
 ## 6. Linking and Traceability
 - Each generated asset includes a sidecar `.txt` with the prompt and references used.
@@ -45,7 +49,8 @@
 
 ## 7. Automation & Testing
 - Use a master script or Makefile to run the full pipeline in order.
-- Automated Jest tests verify output existence, folder structure, and prompt metadata.
+- Automated Jest tests verify output existence, folder structure, and prompt metadata for images, videos, and audio.
+- Note: First audio generation may take up to 60 seconds to boot the model.
 
 ---
 
@@ -54,8 +59,9 @@
 2. Run character/background generation scripts.
 3. Run scene generation script, referencing generated assets.
 4. Run video generation script, referencing scene images.
-5. Review outputs in `novel/` folders; use manifest for navigation.
+5. Run audio generation script, referencing scene descriptions or sound prompts.
+6. Review outputs in `novel/` folders; use manifest for navigation.
 
 ---
 
-_This document describes the working pipeline for Visual Novel asset generation using Gen4 and Kling models._
+_This document describes the working pipeline for Visual Novel asset generation using Gen4, Kling, and Audiogen models._

@@ -1,5 +1,5 @@
 // generate-scenes.test.mjs
-// Jest test for generate-scenes.mjs
+// Jest test for gen4-image-generator.mjs (scene mode)
 
 import { exec } from 'child_process';
 import fs from 'fs';
@@ -12,27 +12,29 @@ const charPrompt = 'A test character for visual novel.';
 const bgPrompt = 'A test background for visual novel.';
 const scenePrompt = 'A test scene for visual novel.';
 
-const charCommand = `node src/generate-characters.mjs --prompt "${charPrompt}" --output ${resultsDir}`;
-const bgCommand = `node src/generate-backgrounds.mjs --prompt "${bgPrompt}" --output ${resultsDir}`;
-
 function getLatestPng(dir) {
   const files = fs.readdirSync(dir).filter(f => f.endsWith('.png'));
   return files.map(f => ({f, t: fs.statSync(path.join(dir, f)).mtimeMs}))
     .sort((a, b) => b.t - a.t)[0]?.f;
 }
 
-describe('generate-scenes.mjs', () => {
+describe('gen4-image-generator.mjs (scene)', () => {
   it('should create the output folder, save the image, and write metadata', (done) => {
+    // Generate character
+    const charOut = path.join(resultsDir, `test-char-${Date.now()}.png`);
+    const charCommand = `node src/gen4-image-generator.mjs --prompt "${charPrompt}" --output "${charOut}"`;
     exec(charCommand, () => {
+      // Generate background
+      const bgOut = path.join(resultsDir, `test-bg-${Date.now()}.png`);
+      const bgCommand = `node src/gen4-image-generator.mjs --prompt "${bgPrompt}" --output "${bgOut}"`;
       exec(bgCommand, () => {
-        const charPath = path.join(resultsDir, getLatestPng(resultsDir));
-        const bgPath = path.join(resultsDir, getLatestPng(resultsDir));
-        const sceneCommand = `node src/generate-scenes.mjs --prompt "${scenePrompt}" --reference_images ${charPath} ${bgPath} --output ${resultsDir}`;
+        // Generate scene using both
+        const sceneOut = path.join(resultsDir, `test-scene-${Date.now()}.png`);
+        const sceneCommand = `node src/gen4-image-generator.mjs --prompt "${scenePrompt}" --local_image "${charOut}" --local_image "${bgOut}" --output "${sceneOut}"`;
         exec(sceneCommand, async (error, stdout, stderr) => {
-          const scenePath = path.join(resultsDir, getLatestPng(resultsDir));
           expect(error).toBeNull();
-          expect(scenePath && fs.existsSync(scenePath)).toBe(true);
-          const metadata = await exiftool.read(scenePath);
+          expect(fs.existsSync(sceneOut)).toBe(true);
+          const metadata = await exiftool.read(sceneOut);
           expect(metadata.Description).toBe(scenePrompt);
           done();
         });

@@ -1,0 +1,50 @@
+node src/generate-scenes.mjs --prompt "The hero receives a quest from the village elder." \
+  --reference_images novel/characters/character-1751706630268.png \
+                    novel/characters/character-1751706700958.png \
+                    novel/backgrounds/background-1751706840705.png \
+  --output novel/scenes
+
+node src/generate-scenes.mjs --prompt "Tender kiss between angel and lady in the medival village. Embrace, love, sensual. lady leaing back in angels arms" \
+  --reference_images input/lady.png \
+                    input/angel.png \
+                    novel/backgrounds/village.png \
+  --output novel/scenes
+
+node src/gen4-image-generator.mjs --prompt "Tender kiss between @vampire and @lady in the medival @village. Embrace, love, sensual. @lady leaning back in @vampire arms" \
+  --local_image input/lady.png \
+  --local_image input/vampire.png \
+  --local_image novel/backgrounds/village.png \
+  --output novel/scenes
+
+node src/generate-videos.mjs --prompt "Tender kiss between @vampire and @lady in the medival @village. Embrace, love, sensual. @lady leaning back in @vampire arms" \
+  --start_image novel/scenes/kiss.png \
+  --output novel/videos --duration 5
+
+# Pose test
+
+node src/gen4-image-generator.mjs --prompt "Tender embrace between @vampire and @lady. Embrace, love, sensual. @lady holding hand on @vampire shoulder in @pose" \
+  --local_image input/lady.png \
+  --local_image input/vampire.png \
+  --local_image input/pose.png \
+  --output novel/scenes
+
+# Pose test
+
+node src/gen4-image-generator.mjs --prompt "Tender embrace between @croak and @lady. Embrace, love, sensual. @lady holding hand on @croak shoulder in @pose" \
+  --local_image input/lady.png \
+  --local_image input/croak.png \
+  --local_image input/pose.png \
+  --output novel/scenes
+
+node src/gen4-image-generator.mjs --prompt "Tender embrace between @croak and @lady. Embrace, love, sensual. @croak and @lady sitting side by side. @croak holding hand on @lady shoulder in @pose2" \
+  --local_image input/lady.png \
+  --local_image input/croak.png \
+  --local_image input/pose2.png \
+  --output novel/scenes
+
+node src/generate-videos.mjs --prompt "Tender embrace and intimate kiss between @croak and @lady. Embrace, love, sensual. @croak and @lady sitting side by side. @croak holding hand on @lady shoulder in @pose2" \
+  --start_image novel/scenes/croak-embrace.png \
+  --output novel/videos --duration 5
+
+
+ffmpeg -i input/embrace.mp4 -i input/croak.mp3 -c:v copy -c:a aac -shortest input/embrace_with_audio.mp4

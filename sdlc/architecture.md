@@ -6,10 +6,7 @@
 / (root)
 ├── samples/                # Example data, scripts, or reference files
 ├── src/                    # Source code implementation
-│   ├── gen4-image-generator.mjs   # Stand-alone script for image generation
-│   ├── generate-characters.mjs    # Script for character image generation
-│   ├── generate-backgrounds.mjs   # Script for background image generation
-│   ├── generate-scenes.mjs        # Script for scene image generation
+│   ├── gen4-image-generator.mjs   # Stand-alone script for all image generation (characters, backgrounds, scenes)
 │   ├── generate-videos.mjs        # Script for video generation (Kling model)
 │   └── ...
 ├── novel/                  # Visual Novel asset outputs
@@ -22,8 +19,8 @@
 ├── test/                   # Automated and manual test scripts
 │   ├── gen4-image-generator.test.mjs
 │   ├── gen4-image-generator.local-image.test.mjs
-│   ├── generate-characters.test.mjs
 │   ├── generate-backgrounds.test.mjs
+│   ├── generate-characters.test.mjs
 │   ├── generate-scenes.test.mjs
 │   ├── generate-videos.test.mjs
 │   ├── generate-videos.manual-test.mjs
@@ -43,8 +40,9 @@
 
 ## Implementation Details
 
-- The pipeline supports markdown-based story, character, background, and scene descriptions for traceable, human-editable workflows.
-- Scripts in `src/` generate images and videos using prompts from these markdown files.
+- All character, background, and scene image generation is now performed via `src/gen4-image-generator.mjs` using the appropriate CLI arguments (including `--prompt`, `--output`, and `--local_image` for references).
+- Video generation is handled by `src/generate-videos.mjs` (Kling model), which supports start images and prompt metadata.
+- The pipeline uses markdown files for story, character, background, and scene descriptions, supporting traceable, human-editable workflows.
 - Each generated asset includes a sidecar `.txt` file with the prompt and references used.
 - Automated and manual tests exist for all major scripts, including long-running video generation.
 - See `doc/sample-run.md` for a full example run, and `doc/visual-novel-pipeline.md` for the overall workflow.

@@ -6,7 +6,7 @@ This repository contains the source code, SDLC documentation, and a full Visual 
 
 - .github/ — GitHub-related files
   - `copilot-instructions.md` — Instructions for GitHub Copilot
-- `src/` — Source code for all asset generation scripts (characters, backgrounds, scenes, videos)
+- `src/` — Source code for all asset generation scripts (characters, backgrounds, scenes, videos, audio)
 - `novel/` — Visual Novel asset outputs and markdown descriptions (storyboard, character/background/scene descriptions)
 - `test/` — Automated and manual test scripts
 - `doc/` — Project documentation, pipeline guides, and sample runs
@@ -25,7 +25,7 @@ This repository contains the source code, SDLC documentation, and a full Visual 
 ## Documentation
 - Pipeline: `doc/visual-novel-pipeline.md`
 - Sample run: `doc/sample-run.md`
-- Image generation: `doc/visual-novel-image-generation.md`
+- Image & audio generation: `doc/visual-novel-image-generation.md`
 - SDLC: `sdlc/architecture.md`, `sdlc/vision.md`, `sdlc/backlog.md`
 
 ## Testing

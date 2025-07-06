@@ -44,6 +44,11 @@
     - [x] edit doc/sample-run.md to use gen4-image-generator.mjs
     - [x] remove extra code from src/generate-*.mjs
     - [x] edit tests to use gen4-image-generator.mjs
+- [x] Create a script to generate audio to scenes & link to description
+    - [x] Check samples/audiogen.txt, check existing src implementations
+    - [x] Create generate-audio.mjs script
+    - [x] Update documentation with audio generation details
+    - [x] Update tests to include audio generation
 - [ ] check src folder and update `architecture.md` with implementation details
 - [ ] Check .github/copilot-instructions.md for any missing instructions
 - [x] Test & Check results. If successful, test again.

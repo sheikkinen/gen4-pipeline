@@ -76,6 +76,34 @@ const input = {
   reference_images: argv.reference_images || []
 };
 
+// Extract tags from reference_images and local_image filenames
+function extractTagFromPath(filePath) {
+  const base = path.basename(filePath);
+  const match = base.match(/^(.*?)\.(png|jpg|jpeg)$/i);
+  return match ? match[1] : null;
+}
+
+let autoTags = [];
+
+if (argv.reference_images) {
+  for (const ref of argv.reference_images) {
+    if (!/^https?:\/\//.test(ref) && fs.existsSync(ref)) {
+      const tag = extractTagFromPath(ref);
+      if (tag) autoTags.push(tag);
+    }
+  }
+}
+if (argv.local_image) {
+  const localImages = Array.isArray(argv.local_image) ? argv.local_image : [argv.local_image];
+  for (const imgPath of localImages) {
+    const tag = extractTagFromPath(imgPath);
+    if (tag) autoTags.push(tag);
+  }
+}
+// Deduplicate and merge with any provided reference_tags
+input.reference_tags = Array.from(new Set([...(argv.reference_tags || []), ...autoTags]));
+
+
 // If local_image is provided, read and base64-encode it/them, then add to reference_images
 if (argv.local_image) {
   const localImages = Array.isArray(argv.local_image) ? argv.local_image : [argv.local_image];
