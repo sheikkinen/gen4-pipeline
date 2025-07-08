@@ -76,4 +76,8 @@ ffmpeg -i novel/videos/video-<timestamp>.mp4 -i novel/audio/audio-<timestamp>.mp
 
 ---
 
+npm test -- test/generate-audio.test.mjs
+npm test -- test/modify-image.test.mjs  
+
+---
 This sample run demonstrates the end-to-end workflow for generating assets for a fantasy visual novel using the provided scripts and markdown descriptions. All image generation is now done via `gen4-image-generator.mjs`.

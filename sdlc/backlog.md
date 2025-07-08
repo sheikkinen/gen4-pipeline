@@ -50,6 +50,8 @@
     - [x] Update documentation with audio generation details
     - [x] Update tests to include audio generation
 - [ ] check src folder and update `architecture.md` with implementation details
-- [ ] Check .github/copilot-instructions.md for any missing instructions
+- [x] Check .github/copilot-instructions.md for any missing instructions
 - [x] Test & Check results. If successful, test again.
 - [x] Update documentation and tests to use gen4-image-generator.mjs directly for all image generation (characters, backgrounds, scenes)
+- [x] Use gen4-image-generator.mjs as sample and implement modify-image.mjs based on samples/kontext.txt
+- [x] Add option for local image like in gen4-image-generator.mjs - use input/lady.png for testing

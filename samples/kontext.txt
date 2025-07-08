@@ -1,0 +1,19 @@
+const input = {
+  prompt: "Change the car color to red, turn the headlights on",
+  go_fast: true,
+  guidance: 2.5,
+  input_image: "https://replicate.delivery/pbxt/N5YURZv4ifaW2bMwU7hmrwzgtxf99DTQXpBeobLt1O7dEc3h/pexels-jmark-253096.jpg",
+  aspect_ratio: "match_input_image",
+  output_format: "jpg",
+  output_quality: 80,
+  disable_safety_checker: true,
+  num_inference_steps: 30
+};
+
+const output = await replicate.run("black-forest-labs/flux-kontext-dev", { input });
+
+// To access the file URL:
+console.log(output.url()); //=> "http://example.com"
+
+// To write the file to disk:
+fs.writeFile("my-image.png", output);
